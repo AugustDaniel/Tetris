@@ -1,6 +1,6 @@
 package gui.state;
 
-public enum State implements StateTransition{
+public enum State implements StateTransition {
 
     MENU {
         @Override
