@@ -30,4 +30,9 @@ public class PlayingScreen extends AbstractNode {
 
         this.root.setCenter(container);
     }
+
+    @Override
+    protected void endNode() {
+
+    }
 }

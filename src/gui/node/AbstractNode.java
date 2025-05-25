@@ -20,6 +20,8 @@ public abstract class AbstractNode implements NodeProvider {
 
     abstract protected void initializeRoot();
 
+    abstract protected void endNode();
+
     @Override
     public Node getNode() {
         return this.root;

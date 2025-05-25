@@ -27,7 +27,7 @@ public class MainMenu extends AbstractNode {
         this.root.setCenter(vbox);
     }
 
-    private void endNode() {
+    protected void endNode() {
         this.nextable.next();
     }
 }
