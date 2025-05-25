@@ -3,28 +3,32 @@ package application;
 import gui.GuiManager;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class App extends Application implements Updatable {
 
-    private VBox root;
     private GuiManager guiManager;
+    private StackPane root;
 
     @Override
     public void start(Stage primaryStage) {
         update();
-        Scene scene = new Scene(this.root);
+
+        double height = Double.parseDouble((String) PropertyHandler.PROPERTIES.get("height"));
+        double width = Double.parseDouble((String) PropertyHandler.PROPERTIES.get("width"));
+
+        Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
-        primaryStage.setHeight(Double.parseDouble((String) PropertyHandler.PROPERTIES.get("height")));
-        primaryStage.setWidth(Double.parseDouble((String) PropertyHandler.PROPERTIES.get("width")));
+        primaryStage.setHeight(height);
+        primaryStage.setWidth(width);
     }
 
     @Override
     public void init() throws Exception {
         super.init();
-        this.root = new VBox();
+        this.root = new StackPane();
         this.guiManager = new GuiManager(this);
     }
 

@@ -4,6 +4,7 @@ import gui.Nextable;
 import gui.NodeProvider;
 import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Region;
 
 public abstract class AbstractNode implements NodeProvider {
 
@@ -13,6 +14,7 @@ public abstract class AbstractNode implements NodeProvider {
     public AbstractNode(Nextable nextable) {
         this.root = new BorderPane();
         this.nextable = nextable;
+        this.root.setPrefSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
         initializeRoot();
     }
 

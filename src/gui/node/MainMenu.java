@@ -1,6 +1,7 @@
 package gui.node;
 
 import gui.Nextable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -13,18 +14,17 @@ public class MainMenu extends AbstractNode {
 
     @Override
     protected void initializeRoot() {
-        VBox container = new VBox();
-
         Label welcomeMessage = new Label("Welcome to Tetris");
 
-        Button startButton = new Button("start");
+        Button startButton = new Button("Start");
         startButton.setOnAction((event) -> {
             endNode();
         });
 
-        container.getChildren().addAll(welcomeMessage, startButton);
+        VBox vbox = new VBox(20, welcomeMessage, startButton);
+        vbox.setAlignment(Pos.CENTER);
 
-        this.root.setCenter(container);
+        this.root.setCenter(vbox);
     }
 
     private void endNode() {
