@@ -17,6 +17,8 @@ public class App extends Application implements Updatable {
         Scene scene = new Scene(this.root);
         primaryStage.setScene(scene);
         primaryStage.show();
+        primaryStage.setHeight(Double.parseDouble((String) PropertyHandler.PROPERTIES.get("height")));
+        primaryStage.setWidth(Double.parseDouble((String) PropertyHandler.PROPERTIES.get("width")));
     }
 
     @Override
