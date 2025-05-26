@@ -17,7 +17,10 @@ public class Block implements Drawable {
 
     @Override
     public void draw(GraphicsContext gc) {
-        gc.fillRect(this.pos.getX(), this.pos.getY(), this.size, this.size);
+        gc.fillRect(this.pos.getX() * this.size,
+                this.pos.getY() * this.size,
+                this.size,
+                this.size);
     }
 
     protected void setPos(Point2D pos) {

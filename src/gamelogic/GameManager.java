@@ -3,6 +3,7 @@ package gamelogic;
 
 import gamelogic.piece.TetrisPiece;
 import gamelogic.piece.TetrisPieceFactory;
+import gamelogic.piece.TetrisPieceType;
 import javafx.scene.canvas.GraphicsContext;
 
 public class GameManager implements Drawable {
@@ -14,6 +15,8 @@ public class GameManager implements Drawable {
     public GameManager() {
         this.board = new Board();
         this.factory = new TetrisPieceFactory();
+
+
     }
 
     public void update() {
@@ -25,7 +28,7 @@ public class GameManager implements Drawable {
     }
 
     public void start() {
-
+        this.board.addPiece(this.factory.createTetrisPiece(TetrisPieceType.Z));
     }
 
     @Override

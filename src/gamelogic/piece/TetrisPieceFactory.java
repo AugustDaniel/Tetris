@@ -18,7 +18,7 @@ public class TetrisPieceFactory {
         this.pieceWidth = 4;
     }
 
-    protected TetrisPiece createTetrisPiece(TetrisPieceType type) {
+    public TetrisPiece createTetrisPiece(TetrisPieceType type) {
         TetrisPiece piece = null;
         this.blocks = new ArrayList<>();
 
