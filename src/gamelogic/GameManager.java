@@ -15,12 +15,10 @@ public class GameManager implements Drawable {
     public GameManager() {
         this.board = new Board();
         this.factory = new TetrisPieceFactory();
-
-
     }
 
     public void update() {
-
+        this.currentPiece.moveDown();
     }
 
     public void stop() {
@@ -28,7 +26,9 @@ public class GameManager implements Drawable {
     }
 
     public void start() {
-        this.board.addPiece(this.factory.createTetrisPiece(TetrisPieceType.Z));
+        TetrisPiece firstPiece = this.factory.createTetrisPiece(TetrisPieceType.Z);
+        this.board.addPiece(firstPiece);
+        this.currentPiece = firstPiece;
     }
 
     @Override

@@ -21,7 +21,6 @@ public class PlayingScreen extends AbstractNode {
     public PlayingScreen(Nextable nextable) {
         super(nextable);
         this.gameManager = new GameManager();
-        this.gameManager.start();
     }
 
     @Override
@@ -34,17 +33,30 @@ public class PlayingScreen extends AbstractNode {
         this.root.setCenter(container);
 
         this.loop = new Timeline(new KeyFrame(
-                Duration.millis(100), e -> updateGame()
+                Duration.millis(1000), e -> updateGame()
         ));
-        this.loop.play();
+        this.loop.cycleCountProperty().setValue(Timeline.INDEFINITE);
 
         this.canvas = new Canvas(this.blockSize * this.gridWidth,
                 this.blockSize * this.gridHeight);
+
+        this.canvas.sceneProperty().addListener((obs, oldScene, newScene) -> {
+            if (newScene != null) {
+                System.out.println("canvas displayed");
+                this.gameManager.start();
+                this.loop.play();
+            }
+        });
 
         this.root.setLeft(this.canvas);
     }
 
     private void updateGame() {
+        this.canvas.getGraphicsContext2D().clearRect(0,
+                0,
+                this.gridWidth * this.blockSize,
+                this.gridHeight * this.blockSize);
+        System.out.println("update");
         this.gameManager.update();
         this.gameManager.draw(this.canvas.getGraphicsContext2D());
     }
