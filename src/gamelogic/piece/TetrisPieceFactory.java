@@ -15,8 +15,8 @@ public class TetrisPieceFactory {
     private List<Block> blocks;
 
     public TetrisPieceFactory() {
-        this.gridWidth = Integer.parseInt((String) PropertyHandler.PROPERTIES.get("gridWidth"));
-        this.gridHeight = Integer.parseInt((String) PropertyHandler.PROPERTIES.get("gridHeight"));
+        this.gridWidth = Integer.parseInt(PropertyHandler.getProperty("gridWidth"));
+        this.gridHeight = Integer.parseInt(PropertyHandler.getProperty("gridHeight"));
         this.pieceWidth = 4;
     }
 

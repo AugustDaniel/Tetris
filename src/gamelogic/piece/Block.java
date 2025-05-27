@@ -13,7 +13,7 @@ public class Block implements Drawable, Cloneable {
 
     public Block(Point pos) {
         this.pos = pos;
-        this.size = Integer.parseInt((String) PropertyHandler.PROPERTIES.get("blockPixelWidth"));
+        this.size = Integer.parseInt(PropertyHandler.getProperty("blockPixelWidth"));
     }
 
     @Override

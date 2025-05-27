@@ -26,9 +26,9 @@ public class PlayingScreen extends AbstractNode {
 
     @Override
     protected void initializeRoot() {
-        this.blockSize = Integer.parseInt((String) PropertyHandler.PROPERTIES.get("blockPixelWidth"));
-        this.gridHeight = Integer.parseInt((String) PropertyHandler.PROPERTIES.get("gridHeight"));
-        this.gridWidth = Integer.parseInt((String) PropertyHandler.PROPERTIES.get("gridWidth"));
+        this.blockSize = Integer.parseInt(PropertyHandler.getProperty("blockPixelWidth"));
+        this.gridHeight = Integer.parseInt(PropertyHandler.getProperty("gridHeight"));
+        this.gridWidth = Integer.parseInt(PropertyHandler.getProperty("gridWidth"));
 
         VBox container = new VBox();
         this.root.setCenter(container);

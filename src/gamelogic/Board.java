@@ -1,5 +1,6 @@
 package gamelogic;
 
+import application.PropertyHandler;
 import gamelogic.piece.Block;
 import gamelogic.piece.TetrisPiece;
 import javafx.scene.canvas.GraphicsContext;
@@ -11,14 +12,21 @@ public class Board implements Drawable {
 
     private final ArrayList<TetrisPiece> pieces;
     private final TetrisPiece boundary;
+    private final int gridWidth;
+    private final int gridHeight;
 
     public Board(TetrisPiece boundary) {
         this.boundary = boundary;
         this.pieces = new ArrayList<>();
+        this.gridWidth = Integer.parseInt(PropertyHandler.getProperty("gridWidth"));
+        this.gridHeight = Integer.parseInt(PropertyHandler.getProperty("gridHeight"));
     }
 
     @Override
     public void draw(GraphicsContext gc) {
+//        for (int i )
+
+
         for (TetrisPiece piece : pieces) {
             piece.draw(gc);
         }

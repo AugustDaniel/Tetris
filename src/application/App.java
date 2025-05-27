@@ -15,8 +15,8 @@ public class App extends Application implements Updatable {
     public void start(Stage primaryStage) {
         update();
 
-        double height = Double.parseDouble((String) PropertyHandler.PROPERTIES.get("height"));
-        double width = Double.parseDouble((String) PropertyHandler.PROPERTIES.get("width"));
+        double height = Double.parseDouble(PropertyHandler.getProperty("height"));
+        double width = Double.parseDouble(PropertyHandler.getProperty("width"));
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
