@@ -1,6 +1,5 @@
 package gamelogic;
 
-import application.PropertyHandler;
 import gamelogic.piece.Block;
 import gamelogic.piece.TetrisPiece;
 import javafx.scene.canvas.GraphicsContext;
