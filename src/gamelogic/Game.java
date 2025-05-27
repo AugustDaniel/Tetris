@@ -32,7 +32,8 @@ public class Game implements GameController {
         }
     }
 
-    private TetrisPiece getNextPiece() {
+    @Override
+    public TetrisPiece getNextPiece() {
         return this.factory.createTetrisPiece(TetrisPieceType.Z);
     }
 

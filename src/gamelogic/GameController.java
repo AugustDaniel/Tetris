@@ -1,5 +1,7 @@
 package gamelogic;
 
+import gamelogic.piece.TetrisPiece;
+
 public interface GameController extends Drawable{
 
     void start();
@@ -7,4 +9,6 @@ public interface GameController extends Drawable{
     void stop();
 
     void update();
+
+    TetrisPiece getNextPiece();
 }
