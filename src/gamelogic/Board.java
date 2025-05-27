@@ -52,8 +52,6 @@ public class Board implements Drawable {
     private boolean intersectsPieces(TetrisPiece piece, TetrisPiece ignore) {
         for (TetrisPiece piece1 : pieces) {
             if (piece1.intersects(piece) && piece1 != ignore) {
-                System.out.println(piece1.getBlocks());
-                System.out.println(piece.getBlocks());
                 return true;
             }
         }
