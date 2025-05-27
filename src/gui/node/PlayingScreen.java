@@ -33,7 +33,7 @@ public class PlayingScreen extends AbstractNode {
         this.root.setCenter(container);
 
         this.loop = new Timeline(new KeyFrame(
-                Duration.millis(1000), e -> updateGame()
+                Duration.millis(250), e -> updateGame()
         ));
         this.loop.cycleCountProperty().setValue(Timeline.INDEFINITE);
 

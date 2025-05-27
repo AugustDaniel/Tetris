@@ -1,10 +1,12 @@
 package gamelogic.piece;
 
 import gamelogic.Drawable;
-import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 
+import java.awt.Point;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class TetrisPiece implements Drawable {
 
@@ -20,10 +22,10 @@ public class TetrisPiece implements Drawable {
 
     public void moveDown() {
         for (Block block : this.blocks) {
-            Point2D oldPos = block.getPos();
-            block.setPos(new Point2D(
-                    oldPos.getX(),
-                    oldPos.getY() + 1
+            Point oldPos = block.getPos();
+            block.setPos(new Point(
+                    oldPos.x,
+                    oldPos.y + 1
             ));
         }
     }
@@ -33,15 +35,15 @@ public class TetrisPiece implements Drawable {
     }
 
     public boolean intersects(TetrisPiece piece) {
-        List<Block> otherBlocks = piece.getBlocks();
-        for (Block block : otherBlocks) {
-            for (Block block1 : this.blocks) {
-                if (block1.getPos().equals(block.getPos())) {
-                    return true;
-                }
+        Set<Point> myPositions = this.blocks.stream()
+                .map(Block::getPos)
+                .collect(Collectors.toSet());
+
+        for (Block b : piece.getBlocks()) {
+            if (myPositions.contains(b.getPos())) {
+                return true;
             }
         }
-
         return false;
     }
 

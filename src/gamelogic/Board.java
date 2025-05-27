@@ -1,6 +1,5 @@
 package gamelogic;
 
-import application.PropertyHandler;
 import gamelogic.piece.TetrisPiece;
 import javafx.scene.canvas.GraphicsContext;
 
@@ -8,13 +7,11 @@ import java.util.ArrayList;
 
 public class Board implements Drawable {
 
-    private final int WIDTH;
-    private final int HEIGHT;
     private final ArrayList<TetrisPiece> pieces;
+    private final TetrisPiece boundary;
 
-    public Board() {
-        this.WIDTH = Integer.parseInt((String) PropertyHandler.PROPERTIES.get("gridWidth"));
-        this.HEIGHT = Integer.parseInt((String) PropertyHandler.PROPERTIES.get("gridHeight"));
+    public Board(TetrisPiece boundary) {
+        this.boundary = boundary;
         this.pieces = new ArrayList<>();
     }
 
@@ -34,10 +31,17 @@ public class Board implements Drawable {
     }
 
     protected boolean canMoveDown(TetrisPiece piece) {
-        return true; //TODO
+        TetrisPiece clone = new TetrisPiece(new ArrayList<>(piece.getBlocks()));
+        clone.moveDown();
+
+        return !(intersectsPieces(clone) || clone.intersects(this.boundary));
     }
 
     protected boolean canBeAdded(TetrisPiece piece) {
+        return intersectsPieces(piece);
+    }
+
+    private boolean intersectsPieces(TetrisPiece piece) {
         for (TetrisPiece piece1 : pieces) {
             if (piece1.intersects(piece)) {
                 return false;

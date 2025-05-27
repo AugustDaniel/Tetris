@@ -13,12 +13,15 @@ public class GameManager implements Drawable {
     private final TetrisPieceFactory factory;
 
     public GameManager() {
-        this.board = new Board();
         this.factory = new TetrisPieceFactory();
+        this.board = new Board(this.factory.createTetrisPiece(TetrisPieceType.BOUNDARY));
     }
 
     public void update() {
-        this.currentPiece.moveDown();
+        if (this.board.canMoveDown(this.currentPiece)) {
+            this.currentPiece.moveDown();
+            System.out.println(this.currentPiece.getBlocks());
+        }
     }
 
     public void stop() {

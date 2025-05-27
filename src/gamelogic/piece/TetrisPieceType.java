@@ -1,5 +1,5 @@
 package gamelogic.piece;
 
 public enum TetrisPieceType {
-    I, Z
+    I, Z, BOUNDARY
 }

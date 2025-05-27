@@ -2,15 +2,16 @@ package gamelogic.piece;
 
 import application.PropertyHandler;
 import gamelogic.Drawable;
-import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
+
+import java.awt.Point;
 
 public class Block implements Drawable {
 
-    private Point2D pos;
+    private Point pos;
     private final int size;
 
-    public Block(Point2D pos) {
+    public Block(Point pos) {
         this.pos = pos;
         this.size = Integer.parseInt((String) PropertyHandler.PROPERTIES.get("blockPixelWidth"));
     }
@@ -23,11 +24,16 @@ public class Block implements Drawable {
                 this.size);
     }
 
-    protected void setPos(Point2D pos) {
+    protected void setPos(Point pos) {
         this.pos = pos;
     }
 
-    protected Point2D getPos() {
+    protected Point getPos() {
         return pos;
+    }
+
+    @Override
+    public String toString() {
+        return this.pos.toString();
     }
 }
