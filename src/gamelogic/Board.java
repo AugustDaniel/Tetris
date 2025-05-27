@@ -13,6 +13,7 @@ public class Board implements Drawable {
     public Board(TetrisPiece boundary) {
         this.boundary = boundary;
         this.pieces = new ArrayList<>();
+        this.pieces.add(boundary);
     }
 
     @Override
@@ -44,10 +45,10 @@ public class Board implements Drawable {
     private boolean intersectsPieces(TetrisPiece piece) {
         for (TetrisPiece piece1 : pieces) {
             if (piece1.intersects(piece)) {
-                return false;
+                return true;
             }
         }
 
-        return true;
+        return false;
     }
 }
