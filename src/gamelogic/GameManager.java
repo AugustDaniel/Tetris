@@ -20,7 +20,6 @@ public class GameManager implements Drawable {
     public void update() {
         if (this.board.canMoveDown(this.currentPiece)) {
             this.currentPiece.moveDown();
-            System.out.println(this.currentPiece.getBlocks());
         }
     }
 

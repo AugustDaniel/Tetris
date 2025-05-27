@@ -46,7 +46,6 @@ public class TetrisPieceFactory {
             blocks.add(new Block(new Point(x, this.gridHeight)));
         }
 
-        System.out.println(blocks);
         return new TetrisPiece(blocks);
     }
 

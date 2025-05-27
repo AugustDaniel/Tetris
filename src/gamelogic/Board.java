@@ -1,9 +1,11 @@
 package gamelogic;
 
+import gamelogic.piece.Block;
 import gamelogic.piece.TetrisPiece;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class Board implements Drawable {
 
@@ -13,7 +15,6 @@ public class Board implements Drawable {
     public Board(TetrisPiece boundary) {
         this.boundary = boundary;
         this.pieces = new ArrayList<>();
-        this.pieces.add(boundary);
     }
 
     @Override
@@ -32,19 +33,27 @@ public class Board implements Drawable {
     }
 
     protected boolean canMoveDown(TetrisPiece piece) {
-        TetrisPiece clone = new TetrisPiece(new ArrayList<>(piece.getBlocks()));
+        //TODO check if piece is on board
+        TetrisPiece clone = new TetrisPiece(
+                piece.getBlocks()
+                        .stream()
+                        .map(Block::clone)
+                        .collect(Collectors.toList())
+        );
         clone.moveDown();
 
-        return !(intersectsPieces(clone) || clone.intersects(this.boundary));
+        return !(intersectsPieces(clone, piece) || clone.intersects(this.boundary));
     }
 
     protected boolean canBeAdded(TetrisPiece piece) {
-        return intersectsPieces(piece);
+        return !intersectsPieces(piece, null);
     }
 
-    private boolean intersectsPieces(TetrisPiece piece) {
+    private boolean intersectsPieces(TetrisPiece piece, TetrisPiece ignore) {
         for (TetrisPiece piece1 : pieces) {
-            if (piece1.intersects(piece)) {
+            if (piece1.intersects(piece) && piece1 != ignore) {
+                System.out.println(piece1.getBlocks());
+                System.out.println(piece.getBlocks());
                 return true;
             }
         }

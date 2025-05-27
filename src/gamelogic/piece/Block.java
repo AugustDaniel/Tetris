@@ -6,7 +6,7 @@ import javafx.scene.canvas.GraphicsContext;
 
 import java.awt.Point;
 
-public class Block implements Drawable {
+public class Block implements Drawable, Cloneable {
 
     private Point pos;
     private final int size;
@@ -35,5 +35,16 @@ public class Block implements Drawable {
     @Override
     public String toString() {
         return this.pos.toString();
+    }
+
+    @Override
+    public Block clone() {
+        try {
+            Block clone = (Block) super.clone();
+            clone.pos = (Point) this.pos.clone();
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }

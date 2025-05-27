@@ -41,7 +41,6 @@ public class TetrisPiece implements Drawable {
 
         for (Block b : piece.getBlocks()) {
             if (myPositions.contains(b.getPos())) {
-                System.out.println(b.getPos());
                 return true;
             }
         }
