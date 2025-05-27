@@ -7,6 +7,7 @@ import gui.Nextable;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
@@ -21,7 +22,7 @@ public class PlayingScreen extends AbstractNode {
 
     public PlayingScreen(Nextable nextable) {
         super(nextable);
-        this.game = new Game();
+        this.game = new Game(this.gridWidth, this.gridHeight);
     }
 
     @Override
@@ -57,7 +58,18 @@ public class PlayingScreen extends AbstractNode {
                 this.gridWidth * this.blockSize,
                 this.gridHeight * this.blockSize);
         this.game.update();
+        drawGrid();
         this.game.draw(this.canvas.getGraphicsContext2D());
+    }
+
+    private void drawGrid() {
+        GraphicsContext gc = this.canvas.getGraphicsContext2D();
+
+        for (int i = 0; i < this.gridWidth; i++) {
+            for (int j = 0; j < this.gridHeight; j++) {
+                gc.strokeRect(i * this.blockSize, j * this.blockSize, this.blockSize, this.blockSize);
+            }
+        }
     }
 
     @Override

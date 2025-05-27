@@ -12,8 +12,8 @@ public class Game implements GameController {
     private TetrisPiece currentPiece;
     private final TetrisPieceFactory factory;
 
-    public Game() {
-        this.factory = new TetrisPieceFactory();
+    public Game(int gridWidth, int gridHeight) {
+        this.factory = new TetrisPieceFactory(gridWidth, gridHeight);
         this.board = new TetrisBoard(this.factory.createTetrisPiece(TetrisPieceType.BOUNDARY));
     }
 
