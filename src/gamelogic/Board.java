@@ -45,7 +45,7 @@ public class Board implements Drawable {
         return !(intersectsPieces(clone, piece) || clone.intersects(this.boundary));
     }
 
-    protected boolean canBeAdded(TetrisPiece piece) {
+    private boolean canBeAdded(TetrisPiece piece) {
         return !intersectsPieces(piece, null);
     }
 

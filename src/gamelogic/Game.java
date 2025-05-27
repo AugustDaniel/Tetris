@@ -21,12 +21,24 @@ public class Game implements GameController {
     public void update() {
         if (this.board.canMoveDown(this.currentPiece)) {
             this.currentPiece.moveDown();
+            return;
         }
+
+        TetrisPiece nextPiece = getNextPiece();
+        if (this.board.addPiece(nextPiece)) {
+            this.currentPiece = nextPiece;
+        } else {
+            stop();
+        }
+    }
+
+    private TetrisPiece getNextPiece() {
+        return this.factory.createTetrisPiece(TetrisPieceType.Z);
     }
 
     @Override
     public void stop() {
-
+        System.out.println("stopped");
     }
 
     @Override
