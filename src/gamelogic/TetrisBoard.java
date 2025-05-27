@@ -7,12 +7,12 @@ import javafx.scene.canvas.GraphicsContext;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
-public class Board implements Drawable {
+public class TetrisBoard implements Drawable {
 
     private final ArrayList<TetrisPiece> pieces;
     private final TetrisPiece boundary;
 
-    public Board(TetrisPiece boundary) {
+    public TetrisBoard(TetrisPiece boundary) {
         this.boundary = boundary;
         this.pieces = new ArrayList<>();
     }

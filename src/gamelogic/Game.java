@@ -8,13 +8,13 @@ import javafx.scene.canvas.GraphicsContext;
 
 public class Game implements GameController {
 
-    private final Board board;
+    private final TetrisBoard board;
     private TetrisPiece currentPiece;
     private final TetrisPieceFactory factory;
 
     public Game() {
         this.factory = new TetrisPieceFactory();
-        this.board = new Board(this.factory.createTetrisPiece(TetrisPieceType.BOUNDARY));
+        this.board = new TetrisBoard(this.factory.createTetrisPiece(TetrisPieceType.BOUNDARY));
     }
 
     @Override
