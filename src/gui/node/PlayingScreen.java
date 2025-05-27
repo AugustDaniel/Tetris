@@ -1,7 +1,8 @@
 package gui.node;
 
 import application.PropertyHandler;
-import gamelogic.GameManager;
+import gamelogic.Game;
+import gamelogic.GameController;
 import gui.Nextable;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -11,7 +12,7 @@ import javafx.util.Duration;
 
 public class PlayingScreen extends AbstractNode {
 
-    private final GameManager gameManager;
+    private final GameController game;
     private Timeline loop;
     private Canvas canvas;
     private int blockSize;
@@ -20,7 +21,7 @@ public class PlayingScreen extends AbstractNode {
 
     public PlayingScreen(Nextable nextable) {
         super(nextable);
-        this.gameManager = new GameManager();
+        this.game = new Game();
     }
 
     @Override
@@ -42,8 +43,7 @@ public class PlayingScreen extends AbstractNode {
 
         this.canvas.sceneProperty().addListener((obs, oldScene, newScene) -> {
             if (newScene != null) {
-                System.out.println("canvas displayed");
-                this.gameManager.start();
+                this.game.start();
                 this.loop.play();
             }
         });
@@ -56,14 +56,13 @@ public class PlayingScreen extends AbstractNode {
                 0,
                 this.gridWidth * this.blockSize,
                 this.gridHeight * this.blockSize);
-        System.out.println("update");
-        this.gameManager.update();
-        this.gameManager.draw(this.canvas.getGraphicsContext2D());
+        this.game.update();
+        this.game.draw(this.canvas.getGraphicsContext2D());
     }
 
     @Override
     protected void endNode() {
         this.loop.stop();
-        this.gameManager.stop();
+        this.game.stop();
     }
 }
