@@ -2,7 +2,7 @@ package gamelogic;
 
 import gamelogic.piece.TetrisPiece;
 
-public interface GameController extends Drawable{
+public interface GameController extends Drawable {
 
     void start();
 
